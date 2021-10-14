@@ -1,1 +1,1 @@
-# nickname-generatot
+# nickname-generator lol
