@@ -2,12 +2,27 @@
 document.getElementById("Random nickname").addEventListener("click", buttonHandler)
 document.getElementById("All names").addEventListener("click", buttonHandler)
 
+// Global Variables
+let nicknames;
 //load names
+fetch("nicknames.txt").then(convertData).then(processData);
+
+function convertData(rawData) {
+    return rawData.text();
+}
+
+function processData(stringData) {
+    nicknames = stringData.split(/\r?\n/);
+}
+
+//input names and generate nickname
+
 
 function buttonHandler () {
     //input
-    let name1 = +document.getElementById("firstname").value;
-    let name2 = +document.getElementById("lastname").value;
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
     //output
-    document.getElementById("output").innerHTML = (firstname + output + lastname)
+    let randomNickname = nicknames[randomInt(0, nicknames.length)]
+    document.getElementById("nickname").innerHTML = (firstName + randomNickname + lastName)
 }
